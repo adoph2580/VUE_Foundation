@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .warning{
+            color:red;
+        }
+    </style>
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <div id="app">
+        <p v-bind:class="{warning:error}">hellow</p>
+        <!-- warning이 true이면 레드로 변함 -->
+        <p v-bind:class="errortextcolor">function</p>
+    </div>
+    <script>
+        new Vue({
+            el:'#app',
+            data:{
+                error:false
+            },
+            computed:{
+                errortextcolor: function(){
+                    return this.error ? 'warning':null;
+                    /*error가 참이면 warning 거짓이면 null*/
+                }
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <div id="app">
+        <app-header v-bind:propsdata='message'></app-header>
+        <app-content v-bind:num='num'></app-content>
+        <!--<app-header v-bind:프롭스 속성 이름="상위 컴포넌트 데이터 이름"></app-header>-->   
+    </div>
+
+    <script>
+        let appHeader={
+            template: '<h1>{{propsdata}}</h1>',
+            props: ['propsdata']
+            /*props:[프롭스 속성이름]*/
+        }
+
+        let appContent={
+            template:'<h1>{{num}}</h1>',
+            props: ['num']
+        }
+    
+        new Vue({                           //인스턴스
+            el:'#app',
+            components:{                    /*:지역변수선언*/
+                'app-header': appHeader,    /*app-header에 appHeader에 있는것을 적용*/
+                'app-content': appContent
+                },
+            data:{
+                message:'값이 내려간다!',
+                num:10
+            }   //root에 message:hi가 있음 이걸 app header에 내릴거임
+                //프롭스데이터이름이 message에서 정의될 이름(propsdata)으로 바꾸게 될거임
+                /*엄마(인스턴스)에서 아들(지역변수)한테 내려오게 하는게 프롭스임*/
+        });
+    </script>
+</body>
+</html>

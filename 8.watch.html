@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <div id="app">
+        {{num}}
+        <button v-on:click='click'>click</button>
+    </div>
+
+    <script>
+        new Vue({
+            el:'#app',
+            data:{
+                num:10
+            },
+            watch:{                     /*num값이 변할때마다 log.text가 출력이된다*/
+                num: function(){
+                    this.logtext();
+                }
+
+            },
+            methods:{
+                click: function(){
+                    this.num=this.num+1;
+                },
+                logtext: function(){
+                    console.log('log');
+                }
+            }
+        })
+    </script>
+</body>
+</html>

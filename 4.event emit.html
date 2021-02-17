@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <div id="app">
+        <p>{{num}}</p>
+        <app-header v-on:pass='logtext'></app-header>
+        <app-content v-on:number='add2'></app-content>
+        
+    </div>
+    
+    <script>
+    let appHeader={
+        template:'<button v-on:click="passEvent">click</button>',
+        //template는 Html Css요소를 삽입 
+        /* v-on:하위 컴포넌트에서 발생한 이벤트 이름="상위 컴포넌트의 메소드이름"></app-header>*/
+        methods:{                    //지역변수의 메소드 생성
+            passEvent: function(){   //passEvent라는 메소스 생성
+                this.$emit('pass');  //클릭시 pass라는 이벤트를 발생
+            }
+        }
+    }
+
+    let appContent={
+        template:'<button v-on:click="number">실습</button>',
+        methods:{
+            number:  function(){
+                this.$emit('number');
+            }  
+        }
+    }
+
+    new Vue({                       //인스턴스생성
+        el:'#app',                  //app을 선택
+        components:{                //지역변수 생성
+            'app-header':appHeader,   //app-header에 appHeat변수내용 
+            'app-content':appContent
+        },
+        methods: {
+            logtext:function(){
+                console.log('로그텍스트');
+            },
+            add2:function(){
+                this.num =this.num +1;
+            }
+        },
+        data: {
+            num:10
+        }
+    });
+    </script>
+</body>
+</html>

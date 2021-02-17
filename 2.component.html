@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <div id="app">
+        <app-header></app-header>
+        <app-body></app-body>
+        <app-footer></app-footer>
+    </div>
+ 
+    <script>
+        /*vue.component('전역컴포넌트이름',컴포넌트 내용);  전역컴포넌트 선언*/
+        Vue.component('app-header',{                    //전역컴포넌트 선언(삽입위치및 이름,내용)
+            template:'<h1>전역 컴포넌트 선언</h1>'        //template:HTML,CSS 요소를 삽입
+        });
+
+        Vue. component('app-body',{
+            template:'<div>전역 컴포넌트 선언</div>'
+        });                                             
+  
+    new Vue({                                           //인스턴스 선언
+        el:'#app',
+        /*components:{지역컴포넌트삽입위치및  이름 :{지역컴포넌트 내용}}*/
+        components:{
+            'app-footer':{
+            template:'<h1>지역 컴포넌트 선언</h1>'
+            }
+        }
+    });
+
+    props    
+    //지역 컴포넌트:특정 인스턴스에 대해서만 사용이 가능(지역을 자주쓰게 될거임)
+    //전역 컴포넌트:여러 인스턴스에 사용이 가능
+    </script>
+</body>
+</html>

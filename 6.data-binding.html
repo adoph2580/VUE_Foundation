@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <div id="app">
+        <!--데이터 바인딩-->
+        <p>{{num}}</p>
+        <!--데이터 바인딩-->
+        <p>{{doublenum}}</p>
+        <!--v-bind:id="아이디이름"-->
+        <p v-bind:id="userid">{{name}}</p>
+            <!--v-if일 경우 참이 면 이것-->
+            <div v-if="loading">
+            Loading...
+            </div>
+            <!--v-else가 거짓이면 이것-->
+             <div v-else>
+            hellow:{{name}}
+            </div>
+                <!--v-show="(loading)"이 만약 거짓이 되면 육안상으로 안보이게됨-->
+                <div v-show="loading"> 
+                    loading2
+                </div>
+    </div>
+    
+
+    <script>
+        new Vue({
+            el:'#app',
+            data:{
+                num:10,
+                name:'adoph2580',
+                userid:12345,
+                loading:true
+            },
+            computed:{
+                doublenum:function(){   //doublenum이라는 함수를 만들고 
+                    return this.num*2;    //num에 2배를 곱하여 반환
+                }
+            }
+        });
+    </script>
+</body>
+</html>

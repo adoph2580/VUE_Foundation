@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <div id="app">
+        <p>{{name}}</p>     <!--{{}}을 넣고 data의 값을 넣어 출력이가능}}-->
+        <p>{{messge}}</p>   <!--{{}}을 넣고 data의 값을 넣어 출력이가능}}-->
+    </div>
+    <script>
+        new Vue({   //new vue({});는 vue를 선언하고 정의를 해주는 역할을 하는 곳
+                    //new vue({});가 인스턴스
+
+        el:'#app',  //어떤곳(#(id)app)에서 선언을 할지 정하는 곳이다 
+                    //이것을 선언하지않으면 아무것도 되지않음(HTML태그)
+
+        data:{      //data:{}는 사용할 정보를 저장하는 곳입니다 
+            messge:'hi',
+            name:'adoph2580'
+        }
+        });         
+    </script>
+</body>
+</html>
